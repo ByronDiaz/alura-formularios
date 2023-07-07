@@ -1,14 +1,16 @@
 export function valida(input) {
-  const tipoDeInput = input.dataset.tipo;
+  const tipoDeInput = input.dataset.tipo; // esto airve para obtener todos los tipos de data
+  //que hay en nuestro html
   if (validadores[tipoDeInput]) {
     validadores[tipoDeInput](input);
   }
-
-  if (input.validity.valid) {
-    input.parentElement.classList.remove("input-container--invalid");
+  if (input.validity.valid) { //verifica si el input esta lleno o no
+    input.parentElement.classList.remove("input-container--invalid"); //esto se usa en caso de que el input
+    //no este lleno que le quite esa clase
     input.parentElement.querySelector(".input-message-error").innerHTML = "";
   } else {
-    input.parentElement.classList.add("input-container--invalid");
+    input.parentElement.classList.add("input-container--invalid");//en este caso como el input
+    //esta lleno le agrega la clase que tenemos entre parentesis
     input.parentElement.querySelector(".input-message-error").innerHTML =
       mostrarMensajeDeError(tipoDeInput, input);
   }
@@ -20,7 +22,8 @@ const tipoDeErrores = [
   "patternMismatch",
   "customError",
 ];
-
+//este es un objeto con los mensajes de errores que se mostraran en la pantalla
+//de usuario
 const mensajesDeError = {
   nombre: {
     valueMissing: "El campo nombre no puede estar vacío",
